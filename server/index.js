@@ -12,7 +12,7 @@ app.use(morgan('tiny'))
 app.use(express.json()) 
 app.use(cors())
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 5000
 const host = process.env.HOST || 'localhost'
 
 
@@ -24,9 +24,9 @@ const  dbConnection=async()=>{
  }
 dbConnection().catch((err)=>console.error(err))
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World !')
-// })
+app.get('/v1', function (req, res) {
+  res.send('api is working')
+})
 
 app.use('/schools', schoolRoutes );
 app.use('/contacts', contactRoutes);
