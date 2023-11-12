@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import CkeInput from "./CkeInput";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function FormData() {
   const {
@@ -8,6 +11,8 @@ function FormData() {
     watch,
     formState: { errors },
   } = useForm();
+
+  const [textValue, setTextValue] = useState("");
 
   async function postData(url = "", data = {}) {
     console.log(data);
@@ -21,8 +26,7 @@ function FormData() {
     });
     return response.json(); // parses JSON response into native JavaScript objects
   }
- 
-  
+
   const onSubmit = (data) => {
     console.log(data);
     postData("http://localhost:5000/contacts", data).then((response) => {
@@ -34,17 +38,20 @@ function FormData() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
-        <input defaultValue="test" {...register("name")} />
+      <div className="d-flex flex-wrap">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {/* register your input into the hook by invoking the "register" function */}
+          <input defaultValue="test" {...register("name")} />
 
-        {/* include validation with required or other standard HTML validation rules */}
-        <input {...register("email", { required: true })} />
-        {/* errors will return when field validation fails  */}
-        {errors.exampleRequired && <span>This field is required</span>}
+          {/* include validation with required or other standard HTML validation rules */}
+          <input {...register("email", { required: true })} />
+          {/* errors will return when field validation fails  */}
+          {errors.exampleRequired && <span>This field is required</span>}
 
-        <input value="submit" type="submit" />
-      </form>
+          <input value="submit" type="submit" />
+        </form>
+        <div className="m-2">{/* <CkeInput/> */}</div>
+      </div>
     </>
   );
 }

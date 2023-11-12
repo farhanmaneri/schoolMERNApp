@@ -18,11 +18,16 @@ function Home() {
           <Button variant="outline-primary">Go to Contacts</Button>
         </Link>
         <div  className="container d-flex justify-content-between">
+    <div>
 
       <FormData />
-      <Counter/>
-        </div>
+    </div>
       </div>
+    <div className="container d-flex jutify-content-between">
+
+      <Counter/>
+    </div>
+        </div>
     </>
   );
 }
