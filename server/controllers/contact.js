@@ -24,9 +24,9 @@ const transporter = nodemailer.createTransport({
 
 let addContact = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name, email,description } = req.body;
 
-    const contact = new Contact({ name, email });
+    const contact = new Contact({ name, email, description});
     const response = await contact.save();
 
     const handlebarOptions = {

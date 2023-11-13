@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import CkeInput from "./CkeInput";
-import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 function FormData() {
   const {
@@ -50,7 +48,7 @@ function FormData() {
 
           <input value="submit" type="submit" />
         </form>
-        <div className="m-2">{/* <CkeInput/> */}</div>
+        <div className="m-2"><CkeInput/></div>
       </div>
     </>
   );
