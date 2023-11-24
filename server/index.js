@@ -7,6 +7,7 @@ const multer = require('multer')
 const userRoutes = require('./routes/user');
 const schoolRoutes = require('./routes/school');
 const contactRoutes = require('./routes/contact');
+const leaveRoutes = require('./routes/leave');
 const addUpload = require('./controllers/upload');
 require('dotenv').config()
 
@@ -16,15 +17,9 @@ app.use(express.json())
 app.use(cors())
 
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 3000
 
-//Configure Cloudinary
- 
-// cloudinary.config({ 
-//   cloud_name: 'farahnmaneri', 
-//   api_key: '926179671519339', 
-//   api_secret: '-doeeiTXUP3FjROlgPc0pTzl2-g' 
-// });
+
 
 const  dbConnection=async()=>{
   let connectonURI = process.env.MONGODB_CONNECTION_URI
@@ -47,6 +42,7 @@ app.post('/upload', upload.single('file') , addUpload)
 app.use('/schools', schoolRoutes );
 app.use('/contacts', contactRoutes);
 app.use('/users', userRoutes);
+app.use('/leave', leaveRoutes);
 
 app.listen(port,  ()=>{
     console.log('working.......')
